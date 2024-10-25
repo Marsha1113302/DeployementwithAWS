@@ -1,0 +1,68 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run pip-audit
+        run: |
+          pip-audit
+
+      - name: Lint Python code
+        run: |
+          flake8 src/  # Adjust the path based on your source code location
+
+      - name: Run Python tests
+        run: |
+          pytest  # This assumes you have tests in the current directory
+
+      - name: Build Docker image
+        run: |
+          docker build -t my_flask_app .
+
+      - name: Run Docker container
+        run: |
+          docker run -d -p 5000:5000 my_flask_app
+          
+      - name: Test Hello World
+        run: |
+          sleep 5  # Wait for the app to start
+          curl -f http://localhost:5000 || exit 1  # Fail if the app doesn't respond
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: integrate  # Ensure the integrate job completes successfully
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Tag and push Docker image
+        run: |
+          docker tag my_flask_app ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest
