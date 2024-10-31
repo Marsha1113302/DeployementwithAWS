@@ -1,7 +1,9 @@
-flask
+flask==1.0
 pytest
 gunicorn
 pandas
 numpy
 matplotlib
 scikit-learn
+pip-audit
+jsonify
