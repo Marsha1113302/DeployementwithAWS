@@ -31,10 +31,6 @@ jobs:
         run: |
           pip-audit || echo "Vulnerabilities found!" 
         continue-on-error: true
-      
-      - name: List directory structure
-        run : |
-          ls -R
 
       - name: Lint Python code
         run: |
@@ -43,13 +39,18 @@ jobs:
         
       - name: Set PYTHONPATH
         run: |
-          export PYTHONPATH=$(pwd)/src
           echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV
+          
+      - name: Print PYTHONPATH
+        run: |
+          echo "PYTHONPATH is set to: $PYTHONPATH"
       
+      - name: Check pytest version
+        run: pytest --version
 
       - name: Run Python tests
         run: |
-          pytest tests/ --maxfail=1 --disable-warnings
+          PYTHONPATH=$(pwd)/src pytest tests/ --maxfail=1 --disable-warnings
         continue-on-error: true
 
       - name: Build Docker image
