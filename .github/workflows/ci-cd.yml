@@ -37,10 +37,14 @@ jobs:
           flake8 src/  # Adjust the path based on your source code location
         continue-on-error: true
         
-
+      - name: Set PYTHONPATH
+        run: |
+          export PYTHONPATH=$(pwd)
+          echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+          
       - name: Run Python tests
         run: |
-          pytest tests/ --maxfail=1 --disable-warnings
+          PYTHONPATH=$(pwd) pytest tests/ --maxfail=1 --disable-warnings
         continue-on-error: true
 
       - name: Build Docker image
