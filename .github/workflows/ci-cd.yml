@@ -40,6 +40,10 @@ jobs:
       - name: Set PYTHONPATH
         run: |
           echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV
+      
+      - name: Check PYTHONPATH
+        run: |
+            echo "PYTHONPATH is set to: $PYTHONPATH"
 
       - name: Run Python tests
         run: |
