@@ -39,7 +39,7 @@ jobs:
 
       - name: Run Python tests
         run: |
-          pytest tests/ --maxfail=1 --disable-warnings
+          PYTHONPATH=src pytest tests/ --maxfail=1 --disable-warnings
         continue-on-error: true
 
       - name: Build Docker image

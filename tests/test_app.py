@@ -1,5 +1,5 @@
 import pytest
-from app import app  # Adjust the import based on the actual app structure
+from src.app import app  # Adjust the import based on the actual app structure
 
 @pytest.fixture
 def client():
