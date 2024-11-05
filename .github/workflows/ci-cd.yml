@@ -80,5 +80,5 @@ jobs:
 
       - name: Tag and push Docker image
         run: |
-          docker tag my_flask_app ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest
+          docker tag my_flask_app:latest ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest
