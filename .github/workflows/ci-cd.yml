@@ -50,15 +50,23 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t my_flask_app:latest .
+          docker build -t my_flask_app .
 
       - name: Run Docker container
         run: |
-          docker run -d -p 5000:5000 my_flask_app:latest
+          docker run -d -name my_flask_container -p 5000:5000 my_flask_app
           
       - name: List Docker images
         run: |
           docker images
+          
+      - name: Check Docker container logs
+        run: |
+          docker logs my_flask_container || true
+
+      - name: Verify container status
+        run: |
+          docker ps
           
       - name: Test Hello World
         run: |
