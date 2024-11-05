@@ -46,6 +46,11 @@ jobs:
         run: |
           PYTHONPATH=$(pwd) pytest tests/ --maxfail=1 --disable-warnings
         continue-on-error: true
+        
+      - name: Start Docker service #explicity star the docker service
+        run: |
+          sudo service docker start
+          sleep 5
 
       - name: Build Docker image
         run: |
