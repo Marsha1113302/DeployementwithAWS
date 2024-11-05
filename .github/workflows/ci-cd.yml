@@ -70,7 +70,7 @@ jobs:
           
       - name: Test Hello World
         run: |
-          sleep 5  # Wait for the app to start
+          sleep 10  # Wait for the app to start
           curl -f http://localhost:5000 || exit 1  # Fail if the app doesn't respond
             
             
