@@ -22,6 +22,21 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.12'
+          
+      - name: Set up Docker Buildx #build and pushes the docker images
+        uses: docker/setup-buildx-action@v1
+        
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          
+      
+      - name: Build and push Docker image
+        run: |
+          docker buildx build --push --tag ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest .
+
 
       - name: Install dependencies
         run: |
@@ -48,25 +63,10 @@ jobs:
         continue-on-error: true
         
 
-      - name: Build Docker image
-        run: |
-          docker build -t my_flask_app .
+      #- name: Build Docker image
+       # run: |
+        #  docker build -t my_flask_app .
 
-      - name: Run Docker container
-        run: |
-          docker run -d --name my_flask_container -p 5000:5000 my_flask_app
-          
-      - name: List Docker images
-        run: |
-          docker images
-          
-      - name: Check Docker container logs
-        run: |
-          docker logs my_flask_container || true
-
-      - name: Verify container status
-        run: |
-          docker ps
           
       - name: Test Hello World
         run: |
@@ -89,8 +89,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Tag Docker image
-        run: docker tag my_flask_app ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest
-      
-      - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest
+      - name: Pull Docker image
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest
+
+      - name: Deploy (replace this with your actual deployment command)
+        run: echo "Deploying my_flask_app"
