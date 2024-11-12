@@ -3,4 +3,4 @@ pytest
 pip-audit
 jsonify
 flake8
-numpy==1.18.0
+numpy==1.20.0
