@@ -2,5 +2,4 @@ Flask
 pytest
 pip-audit
 jsonify
-flake8
-numpy==1.20.0
+flake8==3.8.4
