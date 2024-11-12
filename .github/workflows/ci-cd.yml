@@ -37,6 +37,10 @@ jobs:
           flake8 src/  # Adjust the path based on your source code location
         continue-on-error: true
         
+      - name: Format code with black
+        run: |
+          black . 
+          
       - name: Set PYTHONPATH
         run: |
           export PYTHONPATH=$(pwd)
