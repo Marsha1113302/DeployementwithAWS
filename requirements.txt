@@ -1,5 +1,4 @@
-Flask
+Flask==1.0
 pytest
 pip-audit
-flake8==2.1.0
-pandas==1.0.0
+flake8
