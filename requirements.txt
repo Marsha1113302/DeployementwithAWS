@@ -2,3 +2,4 @@ flask
 pytest
 pip-audit
 jsonify
+flake8
