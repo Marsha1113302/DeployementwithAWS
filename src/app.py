@@ -11,7 +11,6 @@ def home():
 def add():  
      a = 5
      b = 10
-     sum = a + b  
      return jsonify(result=a + b)
 
 if __name__ == '__main__':

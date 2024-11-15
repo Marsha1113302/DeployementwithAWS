@@ -17,4 +17,4 @@ def test_hello_world(client):
 def test_add(client):
     response = client.get('/add')
     assert response.status_code == 200
-    assert response.get_json() == {"result": 15}  # This should pass
+    assert response.get_json() == {"result": 15}  
