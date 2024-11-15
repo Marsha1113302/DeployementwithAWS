@@ -1,4 +1,4 @@
-Flask==2.2.5
+Flask
 pytest
 pip-audit
 flake8

@@ -30,12 +30,10 @@ jobs:
       - name: Run pip-audit
         run: |
           pip-audit
-        continue-on-error: true
 
       - name: Lint Python code
         run: |
           flake8 src/  # Adjust the path based on your source code location
-        continue-on-error: true
         
       - name: Format code with black
         run: |
@@ -49,8 +47,6 @@ jobs:
       - name: Run Python tests
         run: |
           PYTHONPATH=$(pwd) pytest tests/ --maxfail=1 --disable-warnings
-        continue-on-error: true
-        
 
       - name: Build Docker image
         run: |
