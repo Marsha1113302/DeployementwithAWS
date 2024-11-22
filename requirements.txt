@@ -3,3 +3,4 @@ pytest
 pip-audit
 flake8
 black
+detect-secrets

@@ -14,14 +14,18 @@ on:
 jobs:
   integrate:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.12]
+        
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'
+          python-version: ${{ matrix.python-version }}
        
       - name: Install dependencies
         run: |
@@ -31,14 +35,21 @@ jobs:
         run: |
           pip-audit
           
-      - name: Format code with black
-        run: |
-          black . 
-          
       - name: Lint Python code
         run: |
           flake8 src/  # Adjust the path based on your source code location
         
+      - name: Format code with black
+        run: |
+          black .
+      
+      - name: Lint Python code
+        run: |
+          flake8 src/  # Adjust the path based on your source code location
+          
+      - name: Run detect-secrets scan
+        run: |
+          detect-secrets scan
 
       - name: Set PYTHONPATH
         run: |
