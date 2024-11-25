@@ -12,7 +12,7 @@ def add():
      a = 5
      b = 10
      return jsonify(result=a + b)
-     
+    
 
 SECRET_API_KEY = "12345-abcdef-6789"
 
