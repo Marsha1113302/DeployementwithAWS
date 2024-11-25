@@ -80,7 +80,7 @@ jobs:
       - name: Test Hello World
         run: |
           sleep 5  # Wait for the app to start
-          curl -f http://localhost:5000 || exit 1  # Fail if the app doesn't respond
+          curl -f http://0.0.0.0:5000 || exit 1  # Fail if the app doesn't respond
             
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
