@@ -55,7 +55,7 @@ jobs:
         
       - name: Run detect-secrets scan
         run: |
-          detect-secrets scan --fail-on-detection
+          detect-secrets scan || exit 1
         continue-on-error: true
         
       - name: Set PYTHONPATH
