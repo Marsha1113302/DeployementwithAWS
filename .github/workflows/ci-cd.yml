@@ -53,9 +53,10 @@ jobs:
         run: |
           flake8 src/  # Adjust the path based on your source code location
         
-      - name: Run detect-secrets scan
+      - name: Scan for secrets
         run: |
-          detect-secrets scan || exit 1
+          detect-secrets scan > detect-secrets-output.json
+          grep '"results": {}' detect-secrets-output.json || (echo "Secrets detected!" && cat detect-secrets-output.json && exit 1)
         continue-on-error: true
         
       - name: Set PYTHONPATH
