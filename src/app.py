@@ -5,13 +5,13 @@ app = Flask(__name__)
 @app.route("/")
 
 def home():
-    return jsonify(message="Hello, Marshall!")
+    return "Hello, Marshall!"
 
 @app.route('/add')
 def add():  
-     a = 5
-     b = 10
-     return jsonify(result=a + b)
+    a = 5
+    b = 10
+    return f"Result: {a + b}"
     
 
 SECRET_API_KEY = "12345-abcdef-6789"
