@@ -11,7 +11,7 @@ def home():
 def add():  
     a = 5
     b = 10
-    return f"Result: {a + b}"
+    return str(a + b)
     
 
 SECRET_API_KEY = "12345-abcdef-6789"

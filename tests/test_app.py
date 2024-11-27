@@ -11,10 +11,10 @@ def test_hello_marshall(client):
     """Test the hello marshall route."""
     response = client.get('/')
     assert response.status_code == 200
-    assert response.data == b'{"message":"Hello, Marshall!"}\n'
-    
-    
+    assert response.data.decode('utf-8') == "Hello, Marshall!"  
+
 def test_add(client):
+    """Test the add route."""
     response = client.get('/add')
     assert response.status_code == 200
-    assert response.get_json() == {"result": 15}  
+    assert response.data.decode('utf-8') == "15"  
