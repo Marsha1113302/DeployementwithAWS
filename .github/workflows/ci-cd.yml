@@ -93,7 +93,7 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/my_flask_app:latest       
 
 
-  Pull Docker Image:
+  pull_docker_image:
     runs-on: ubuntu-latest
     needs: integrate  # Ensure the integrate job completes successfully
     steps:
