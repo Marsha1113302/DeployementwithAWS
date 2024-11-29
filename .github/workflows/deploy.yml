@@ -16,7 +16,7 @@ env:
 
   ECS_CLUSTER: DemoCluster              # set this to your Amazon ECS cluster name
 
-  ECS_TASK_DEFINITION: DemoTask.json # set this to the json file path
+  ECS_TASK_DEFINITION: .aws/DemoTask.json # set this to the json file path
 
                                               # to your Amazon ECS task definition
 
@@ -31,7 +31,12 @@ env:
 # CRON jobs for recurring Github actions
 
 on:
-
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 #schedule:
 
 #   - cron: '0 0 * * 3' # At 00:00 on Wednesday
