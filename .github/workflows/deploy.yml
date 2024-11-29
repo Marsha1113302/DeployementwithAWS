@@ -12,17 +12,17 @@ env:
 
   ECR_REPOSITORY: demo          # set this to your Amazon ECR repository name
 
-  ECS_SERVICE: ecs-service            # set this to your Amazon ECS service name
+  ECS_SERVICE: DemoService        # set this to your Amazon ECS service name
 
   ECS_CLUSTER: DemoCluster              # set this to your Amazon ECS cluster name
 
-  ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION.json # set this to the json file path
+  ECS_TASK_DEFINITION: DemoTask.json # set this to the json file path
 
                                               # to your Amazon ECS task definition
 
                                               # file, e.g. .aws/task-definition.json
 
-  CONTAINER_NAME: MY_CONTAINER_NAME           # set this to the name of the container in the
+  CONTAINER_NAME: DemoContainer           # set this to the name of the container in the
 
                                               # containerDefinitions section of your task definition
 
