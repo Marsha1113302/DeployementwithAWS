@@ -22,7 +22,7 @@ env:
 
                                               # file, e.g. .aws/task-definition.json
 
-  CONTAINER_NAME: DemoContainer           # set this to the name of the container in the
+  CONTAINER_NAME: my_flask_app           # set this to the name of the container in the
 
                                               # containerDefinitions section of your task definition
 
