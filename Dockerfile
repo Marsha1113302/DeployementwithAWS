@@ -11,7 +11,7 @@ RUN pip install -r requirements.txt
 COPY src/ /app/src
 
 # Expose the port the app runs on
-EXPOSE 80
+EXPOSE 5000
 
 # Run the app
 CMD ["python", "src/app.py"]
