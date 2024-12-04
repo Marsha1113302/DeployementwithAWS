@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:436524440789:task-definition/DemoTask:4",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:436524440789:task-definition/DemoTask:8",
     "containerDefinitions": [
         {
             "name": "my_flask_app",
@@ -22,10 +22,8 @@
             ],
             "essential": true,
             "environment": [],
-            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -35,8 +33,7 @@
                     "max-buffer-size": "25m",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
+                }
             },
             "systemControls": []
         }
@@ -44,7 +41,7 @@
     "family": "DemoTask",
     "executionRoleArn": "arn:aws:iam::436524440789:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 4,
+    "revision": 8,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -90,7 +87,6 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-12-02T21:47:52.876Z",
+    "registeredAt": "2024-12-03T20:42:37.476Z",
     "registeredBy": "arn:aws:iam::436524440789:root",
     "tags": []
-}
