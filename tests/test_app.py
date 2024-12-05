@@ -11,7 +11,7 @@ def test_hello_marshall(client):
     """Test the hello marshall route."""
     response = client.get('/')
     assert response.status_code == 200
-    assert response.data.decode('utf-8') == "Hello, Everyone!"  
+    assert response.data.decode('utf-8') == "Hello, Marshall!"  
 
 def test_add(client):
     """Test the add route."""
