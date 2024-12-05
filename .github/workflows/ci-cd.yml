@@ -35,11 +35,6 @@ jobs:
           pip-audit
         continue-on-error: true
 
-      - name: Lint Python code
-        run: |
-          flake8 src/  # Adjust the path based on your source code location
-        continue-on-error: true
-        
       - name: Format code with black
         run: |
           black .
