@@ -52,17 +52,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
- 
-
-        # Place secret keys in Github repo
-
-        # (under Settings->Secrets and variables->Actions)
-
-        # for login steps
-
-        # AWS keys can be created under
-
-        # profile->Security Credentials->Access Keys
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -79,13 +68,6 @@ jobs:
         with:
             mask-password: 'true'
 
- 
-
-        # Build a docker container and
-
-        # push it to ECR so that it can
-
-        # be deployed to ECS.
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
